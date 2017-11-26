@@ -1,0 +1,16 @@
+{{define "header"}}
+  <link href="statics/css/index.css" rel="stylesheet">
+  <link href="statics/css/article.css" rel="stylesheet">
+  <script src="statics/js/index.js"></script>
+{{end}}
+{{define "content"}}
+  <div class="container">
+    <h1>{{.title}}</h1>
+    <hr>
+    {{.posteddate}}
+    <hr>
+    <p>
+      {{.body}}
+    </p>
+  </div>
+{{end}}  

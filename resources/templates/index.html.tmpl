@@ -1,0 +1,38 @@
+{{define "header"}}
+  <link href="statics/css/index.css" rel="stylesheet">
+  <script src="statics/js/index.js"></script>
+{{end}}
+{{define "content"}}
+  <div class="container">
+    {{range .articles}}
+    <div class="card article-card">
+      <div class="card-block">
+        <h4 class="card-title">{{.Title}}</h4>
+        <p class="card-text">{{.Abstruct}}</p>
+        <form action="/article" method="get">
+          <input type="hidden" name="id" value="{{.ID}}">
+          <button class="btn btn-primary">show article</button>
+        </form>
+      </div>
+      <div class="card-footer text-muted">
+        {{.PostingDate}}
+      </div>
+    </div>
+    {{end}}
+  </div>
+  
+  <div class="container text-center">
+    <ul class="nav nav-pills nav-fill">
+      {{if .canPrev}}
+      <li class="nav-item">
+        <a class="nav-link" href="/?page={{.prevNum}}">prev</a>
+      </li>
+      {{end}}
+      {{if .canNext}}
+      <li class="nav-item">
+        <a class="nav-link" href="/?page={{.nextNum}}">next</a>
+      </li>
+      {{end}}
+    </ul>
+  </div>
+{{end}}

@@ -1,0 +1,38 @@
+{{define "navbar"}}
+  <nav class="navbar navbar-dark bg-dark" style="background-color: #3e3586;">
+    <div class="container">
+      <a class="navbar-brand" href="/">braind</a>
+      {{if .postable}}
+      <button type="button" class="btn btn-secondary btn-sm" data-toggle="modal" data-target="#postModal">
+        post
+      </button>
+      {{end}}
+      <a class="nav-item" href="#">signin</a>
+    </div>
+  </nav>
+  {{if .postable}}
+  <div class="modal fade" id="postModal" tabindex="-1" role="dialog" aria-labelledby="postModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <form id="articleForm" class="modal-content" action="/post" method="post">
+        <input type="hidden" name="_csrf" value="{{.csrf}}">
+        <div class="modal-header">
+          <h5 class="modal-title" id="postModalLabel">
+            <input id="articleTitle" name="articleTitle" placeholder="Article">
+          </h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <textarea id="articleBody" name="articleBody" style="height: 600px; width:100%;" placeholder="text"></textarea>
+        </div>
+        <div class="modal-footer">
+          <button id="cleanArticleButton" type="button" class="btn btn-secondary">Clean</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button id="postArticleButton" type="button" class="btn btn-primary">publish</button>
+        </div>
+      </form>
+    </div>
+  </div>
+  {{end}}
+{{end}}
