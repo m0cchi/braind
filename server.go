@@ -25,7 +25,7 @@ func main() {
 		fmt.Printf("failed to open datasource: %v\n", err)
 		os.Exit(1)
 	}
-	err = handler.InitHandler(datasource)
+	err = handler.Init(datasource)
 	if err != nil {
 		fmt.Printf("failed to InitHandler: %v\n", err)
 		os.Exit(1)
