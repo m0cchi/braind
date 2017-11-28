@@ -30,6 +30,7 @@ func main() {
 		fmt.Printf("failed to InitHandler: %v\n", err)
 		os.Exit(1)
 	}
+	defer handler.Final()
 
 	r := gin.Default()
 
